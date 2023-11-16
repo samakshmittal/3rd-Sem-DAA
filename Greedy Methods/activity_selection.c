@@ -6,7 +6,7 @@ struct activity{
     int finish;        // Finish time of activity
 };
 int main(){
-    struct activity *old=NULL;
+    struct activity *old=NULL, *new;
     int flag=0;
     while(flag==0){
         printf("Enter the number of activity : ");
@@ -15,6 +15,10 @@ int main(){
         scanf("%d", &old->start);
         printf("Enter the finish time of activity : ");
         scanf("%d", &old->finish);
-        struct activity *new=malloc();
+        new=malloc(sizeof(struct activity));
+        if(new==NULL){
+            exit(1);
+        }
+        
     }
 }
