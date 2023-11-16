@@ -7,7 +7,7 @@ struct activity{
 };
 int main(){
     struct activity *old=NULL, *new;
-    int flag=0;
+    int flag=0, size=0, i;
     while(flag==0){
         printf("Enter the number of activity : ");
         scanf("%d", &old->number);
@@ -18,6 +18,9 @@ int main(){
         new=malloc(sizeof(struct activity));
         if(new==NULL){
             exit(1);
+        }
+        for(i=0; i<size; i++){
+            new[i]=old[i];
         }
         
     }
