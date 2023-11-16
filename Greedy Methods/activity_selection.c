@@ -2,44 +2,44 @@
 #include <stdlib.h>
 int size=0;
 struct activity{
-    int number;        // Number of activity
-    int start;         // Start time of activity
-    int finish;        // Finish time of activity
+    int number;                                              // Number of activity
+    int start;                                               // Start time of activity
+    int finish;                                              // Finish time of activity
 };
 int partition(struct activity arr[], int beg, int end);      // Declare function partition
 void quicksort(struct activity arr[], int beg, int end);     // Declare function quicksort
 int main(){
-    struct activity *old=NULL, *new, *temp, t;       // Initialization
-    int i;       // Initialization
-    char choice='y';       // Initialization
+    struct activity *old=NULL, *new, *temp, t;               // Initialization
+    int i, j;                                                // Initialization
+    char choice='y';                                         // Initialization
     while(choice=='y' || choice=='Y'){
-        temp=malloc(sizeof(struct activity));     // Allocating memory to temp
-        temp->number=size;      // Entering activity number by series automatically
+        temp=malloc(sizeof(struct activity));                // Allocating memory to temp
+        temp->number=size;                                   // Entering activity number by series automatically
         printf("Enter the start time of activity : ");
-        scanf("%d", &temp->start);     // Taking input of start time of a activity
+        scanf("%d", &temp->start);                           // Taking input of start time of a activity
         printf("Enter the finish time of activity : ");
-        scanf("%d", &temp->finish);     // Taking input of finish time of a activity
-        new=malloc((size+1)*sizeof(struct activity));
-        if(new==NULL){
+        scanf("%d", &temp->finish);                          // Taking input of finish time of a activity
+        new=malloc((size+1)*sizeof(struct activity));        // Allocating memory to new according to array
+        if(new==NULL){                                       // Checking overflow condition
             exit(1);
         }
-        for(i=0; i<size; i++){
+        for(i=0; i<size; i++){                               // Copy activities from old to new
             new[i]=old[i];
         }
-        new[size].number=temp->number;
-        new[size].start=temp->start;
-        new[size].finish=temp->finish;
-        size++;
-        free(old);
-        old=new;
+        new[size].number=temp->number;                       // Entering new activity number to new
+        new[size].start=temp->start;                         // Entering new activity start time to new
+        new[size].finish=temp->finish;                       // Entering new activity finish time to new
+        size++;                                              // Incrementing size
+        free(old);                                           // Free memory from old
+        old=new;                                             // Making old as new
         printf("Do you want to enter new activity (Y/N) : ");
-        scanf("%s", &choice);
+        scanf("%s", &choice);                                // Asking for entering new activity
     }
     printf("Actvities entered by user:\nActivity number\t Activity start time\tActivity finish time\n");
-    for(i=0; i<size; i++){
+    for(i=0; i<size; i++){                                   // Printing activity entered by user
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
-    quicksort(old, 0, size-1);
+    quicksort(old, 0, size-1);                               // Applying quick sort on 
     for(i=0; i<size-1; i++){
         if(old[i].finish==old[i+1].finish){
             if(old[i+1].start<old[i].start){
@@ -53,7 +53,7 @@ int main(){
     for(i=0; i<size; i++){
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
-    
+
     return 0;
 }
 int partition(struct activity arr[], int beg, int end){                // Defining partition function
