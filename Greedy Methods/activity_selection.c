@@ -15,6 +15,6 @@ int main(){
         scanf("%d", &old->start);
         printf("Enter the finish time of activity : ");
         scanf("%d", &old->finish);
-        struct activity *new=malloc()
+        struct activity *new=malloc();
     }
 }
