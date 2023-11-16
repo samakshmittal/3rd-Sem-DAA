@@ -6,19 +6,19 @@ struct activity{
     int start;         // Start time of activity
     int finish;        // Finish time of activity
 };
-int partition(struct activity arr[], int beg, int end);                // Declare function partition
-void quicksort(struct activity arr[], int beg, int end);               // Declare function quicksort
+int partition(struct activity arr[], int beg, int end);      // Declare function partition
+void quicksort(struct activity arr[], int beg, int end);     // Declare function quicksort
 int main(){
-    struct activity *old=NULL, *new, *temp;
-    int i;
-    char choice='y';
+    struct activity *old=NULL, *new, *temp, t;       // Initialization
+    int i;       // Initialization
+    char choice='y';       // Initialization
     while(choice=='y' || choice=='Y'){
-        temp=malloc(sizeof(struct activity));
-        temp->number=size;
+        temp=malloc(sizeof(struct activity));     // Allocating memory to temp
+        temp->number=size;      // Entering activity number by series automatically
         printf("Enter the start time of activity : ");
-        scanf("%d", &temp->start);
+        scanf("%d", &temp->start);     // Taking input of start time of a activity
         printf("Enter the finish time of activity : ");
-        scanf("%d", &temp->finish);
+        scanf("%d", &temp->finish);     // Taking input of finish time of a activity
         new=malloc((size+1)*sizeof(struct activity));
         if(new==NULL){
             exit(1);
@@ -40,10 +40,20 @@ int main(){
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
     quicksort(old, 0, size-1);
+    for(i=0; i<size-1; i++){
+        if(old[i].finish==old[i+1].finish){
+            if(old[i+1].start<old[i].start){
+                t=old[i];
+                old[i]=old[i+1];
+                old[i+1]=t;
+            }
+        }
+    }
     printf("Actvities after sorting according to finish time:\nActivity number\t Activity start time\tActivity finish time\n");
     for(i=0; i<size; i++){
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
+    
     return 0;
 }
 int partition(struct activity arr[], int beg, int end){                // Defining partition function
