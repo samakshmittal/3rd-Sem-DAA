@@ -142,12 +142,12 @@ int main() {
         sizearr++;   // Increment sizearr
         free(freq);   // Free memory from freq
         free(arr);   // Free memory from arr
-        freq = newfreq;
-        arr = newarr;
+        freq = newfreq;   // Making newfreq as freq
+        arr = newarr;   // Making newarr as arr
         printf("Do you want to enter new activity (Y/N) : ");
         scanf("%s", &choice);                                // Asking for entering new activity
     }
-    int size = sizearr / sizeof(arr[0]);
+    int size = sizearr / sizeof(arr[0]);   // 
     huffmancodes(arr, freq, size);
     return 0;
 }
