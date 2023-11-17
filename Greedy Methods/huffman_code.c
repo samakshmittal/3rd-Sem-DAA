@@ -147,7 +147,7 @@ int main() {
         printf("Do you want to enter new activity (Y/N) : ");
         scanf("%s", &choice);                                // Asking for entering new activity
     }
-    int size = sizearr / sizeof(arr[0]);   // 
-    huffmancodes(arr, freq, size);
+    int size = sizearr / sizeof(arr[0]);   // Calculate the size of the arrays
+    huffmancodes(arr, freq, size);   // Generate and print Huffman codes for the given arrays
     return 0;
 }
