@@ -136,12 +136,12 @@ int main() {
         for (i = 0; i < sizearr; i++) {   // Copy characters from arr to newarr
             newarr[i] = arr[i];
         }
-        newfreq[sizefreq] = num;   // Enter new frequency num into 
-        sizefreq++;
-        newarr[sizearr] = st;
-        sizearr++;
-        free(freq);
-        free(arr);
+        newfreq[sizefreq] = num;   // Enter new frequency num to newfreq
+        sizefreq++;   // Increment sizefreq
+        newarr[sizearr] = st;   // Enter new character st to newarr
+        sizearr++;   // Increment sizearr
+        free(freq);   // Free memory from freq
+        free(arr);   // Free memory from arr
         freq = newfreq;
         arr = newarr;
         printf("Do you want to enter new activity (Y/N) : ");
