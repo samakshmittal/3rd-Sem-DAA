@@ -136,7 +136,7 @@ int main() {
         for (i = 0; i < sizearr; i++) {   // Copy characters from arr to newarr
             newarr[i] = arr[i];
         }
-        newfreq[sizefreq] = num;   
+        newfreq[sizefreq] = num;   // Enter new frequency num into 
         sizefreq++;
         newarr[sizearr] = st;
         sizearr++;
