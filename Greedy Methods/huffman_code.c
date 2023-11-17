@@ -76,52 +76,44 @@ struct minheap *createbuildheap(char data[], int freq[], int size) {   // Create
     struct minheap *min = createheap(size);   // Create a new heap with the given size
     int i;   // Initialization
     for (i = 0; i < size; i++) {   // Maintain loop through array
-        min->array[i] = newnode(data[i], freq[i]);   
+        min->array[i] = newnode(data[i], freq[i]);   // Create a new node and assign it to the heap array
     }
-    min->size = size;
-    buildheap(min);
-    return min;
+    min->size = size;   // Set the size of the heap
+    buildheap(min);   // Build the heap using the created array of nodes
+    return min;   // Return the created and built heap
 }
-
-// Build the Huffman tree and return the root node
-struct node *huffman(char data[], int freq[], int size) {
-    struct node *left, *top, *right;
-    struct minheap *min = createbuildheap(data, freq, size);
-    while (min->size != 1) {
-        left = extractmin(min);
-        right = extractmin(min);
-        top = newnode('$', left->freq + right->freq);
-        top->left = left;
-        top->right = right;
-        insertheap(min, top);
+struct node *huffman(char data[], int freq[], int size) {   // Build the Huffman tree and return the root node
+    struct node *left, *top, *right;   // Declare pointers for left, right, and top nodes
+    struct minheap *min = createbuildheap(data, freq, size);   // Create and build a heap from the given data and frequency arrays
+    while (min->size != 1) {   // Maintain loop until there is only one node in the heap
+        left = extractmin(min);   // Extract the minimum node from the heap
+        right = extractmin(min);   // Extract the second minimum node from the heap
+        top = newnode('$', left->freq + right->freq);   // Create a new node with the combined frequency and '$' as data
+        top->left = left;   // Assign the left node as the left child of the new node
+        top->right = right;   // Assign the right node as the right child of the new node
+        insertheap(min, top);   // Insert the new node back into the heap
     }
-    return extractmin(min);
+    return extractmin(min);   // Return the root of the Huffman tree
 }
-
-// Recursively print the Huffman codes
-void printcodes(struct node *root, int arr[], int top) {
+void printcodes(struct node *root, int arr[], int top) {   // Recursively print the Huffman codes
     if (root->left) {
-        arr[top] = 0;
-        printcodes(root->left, arr, top + 1);
+        arr[top] = 0;   // If there is a left child, set the code at the current index to 0
+        printcodes(root->left, arr, top + 1);   // Recursively call the function
     }
     if (root->right) {
-        arr[top] = 1;
-        printcodes(root->right, arr, top + 1);
+        arr[top] = 1;      // If there is a right child, set the code at the current index to 1
+        printcodes(root->right, arr, top + 1);   // Recursively call the function
     }
     if (!(root->left) && !(root->right)) {
-        printf("%c ", root->data);
-        printarr(arr, top);
+        printf("%c ", root->data);   // If the node is a leaf node (no left or right child), print the character and its code
+        printarr(arr, top);   // Print the array representing the code
     }
 }
-
-// Generate and print Huffman codes for the given character and frequency arrays
-void huffmancodes(char data[], int freq[], int size) {
-    struct node *root = huffman(data, freq, size);
-    int arr[size], top = 0;
-    printcodes(root, arr, top);
+void huffmancodes(char data[], int freq[], int size) {   // Generate and print Huffman codes for the given character and frequency arrays
+    struct node *root = huffman(data, freq, size);   // Build the Huffman tree and get the root node
+    int arr[size], top = 0;   // Initialize an array to store the codes and a variable for the current index in the array
+    printcodes(root, arr, top);   // Print the Huffman codes using the root of the Huffman tree
 }
-
-// Main function
 int main() {
     char arr[] = {'a', 'b', 'c', 'd', 'e', 'f'};
     int freq[] = {5, 9, 12, 13, 16, 45};
