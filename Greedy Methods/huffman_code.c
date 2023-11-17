@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 struct node {   // Define a structure for a node in a binary tree
-    char data;            // Character data of the node
+    char data;   // Character data of the node
     unsigned freq;        // Integer frequency of the character
     struct node *left, *right;  // Pointers pointing to left and right children nodes
 };
