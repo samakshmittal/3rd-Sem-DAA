@@ -7,18 +7,18 @@ struct node {   // Define a structure for a node in a binary tree
 };
 // Define a structure for a minimum heap
 struct minheap {
-    unsigned size;        // Current size of the heap
-    unsigned capacity;    // Capacity of the heap
+    unsigned size;   // Current size of the heap
+    unsigned capacity;   // Capacity of the heap
     struct node **array;  // Array of pointers pointing towards nodes
 };
-struct node *newnode(char data, unsigned freq) {       // Create and return a new node with the given character and frequency
+struct node *newnode(char data, unsigned freq) {   // Create and return a new node with the given character and frequency
     struct node *temp = malloc(sizeof(struct node));   // Allocating memory to a node temp of size of structure node
     temp->left = temp->right = NULL;   // Initializing left node address and right node address of the temp node as null
     temp->data = data;   // Inserting data in the node
     temp->freq = freq;   // Inserting frequency in the node
     return temp;
 }
-struct minheap *createheap(unsigned capacity) {        // Create and return a new minimum heap with the given capacity
+struct minheap *createheap(unsigned capacity) {   // Create and return a new minimum heap with the given capacity
     struct minheap *min = malloc(sizeof(struct minheap));   // Allocating memory to min of size of structure minheap
     min->size = 0;   // Make size of min as 0
     min->capacity = capacity;   // Inserting capacity as capacity of min
