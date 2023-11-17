@@ -59,17 +59,14 @@ void insertheap(struct minheap *min, struct node *minnode) {   // Insert a node 
     }
     min->array[i] = minnode;   // Place the new node in the correct position after applying the loop
 }
-// Build a heap from the given minheap
-void buildheap(struct minheap *min) {
-    int n = min->size - 1, i;
-    for (i = (n - 1) / 2; i >= 0; i--) {
-        minheapify(min, i);
+void buildheap(struct minheap *min) {   // Build a heap from the given minheap
+    int n = min->size - 1, i;   // Set n to the last index of the heap
+    for (i = (n - 1) / 2; i >= 0; i--) {   // Maintain loop from the last non-leaf node to the root
+        minheapify(min, i);   // Call minheapify to maintain the min-heap property
     }
 }
-
-// Print the array of codes
-void printarr(int arr[], int n) {
-    int i;
+void printarr(int arr[], int n) {   // Print the array of codes
+    int i;   // 
     for (i = 0; i < n; i++) {
         printf("%d", arr[i]);
     }
