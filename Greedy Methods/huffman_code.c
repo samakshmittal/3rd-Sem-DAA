@@ -66,19 +66,17 @@ void buildheap(struct minheap *min) {   // Build a heap from the given minheap
     }
 }
 void printarr(int arr[], int n) {   // Print the array of codes
-    int i;   // 
-    for (i = 0; i < n; i++) {
-        printf("%d", arr[i]);
+    int i;   // Initialization
+    for (i = 0; i < n; i++) {   // Maintaining loop for printing the array
+        printf("%d", arr[i]);   // Printing array
     }
     printf("\n");
 }
-
-// Create a heap from given character and frequency arrays, and build the heap
-struct minheap *createbuildheap(char data[], int freq[], int size) {
-    struct minheap *min = createheap(size);
-    int i;
-    for (i = 0; i < size; i++) {
-        min->array[i] = newnode(data[i], freq[i]);
+struct minheap *createbuildheap(char data[], int freq[], int size) {   // Create a heap from given character and frequency arrays, and build the heap
+    struct minheap *min = createheap(size);   // Create a new heap with the given size
+    int i;   // Initialization
+    for (i = 0; i < size; i++) {   // Maintain loop through array
+        min->array[i] = newnode(data[i], freq[i]);   
     }
     min->size = size;
     buildheap(min);
