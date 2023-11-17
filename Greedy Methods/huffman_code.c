@@ -115,9 +115,39 @@ void huffmancodes(char data[], int freq[], int size) {   // Generate and print H
     printcodes(root, arr, top);   // Print the Huffman codes using the root of the Huffman tree
 }
 int main() {
-    char arr[] = {'a', 'b', 'c', 'd', 'e', 'f'};
-    int freq[] = {50, 10, 30, 5, 3, 2};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    char *arr=NULL, st, choice='y';   // Initialization
+    int *freq=NULL, sizearr=0, sizefreq=0, num, i;   // Initialization
+    while(choice=='y' || choice=='Y'){
+        printf("Enter the character : ");   // Taking input of character
+        scanf("%s", &st);
+        printf("Enter the character's frequency : ");   // Taking input of character's frequency
+        scanf("%d", &num);
+        int *newfreq = malloc((sizefreq + 1) * sizeof(int));   // Allocating memory to newfreq according to array
+        if (newfreq == NULL) {   // Checking overflow condition
+            exit(1);
+        }
+        char *newarr = malloc((sizearr + 1) * sizeof(int));   // Allocating memory to newarr according to array
+        if (newarr == NULL) {   // Checking overflow condition
+            exit(1);
+        }
+        for (i = 0; i < sizefreq; i++) {   // Copy frequencies from freq to newfreq
+            newfreq[i] = freq[i];
+        }
+        for (i = 0; i < sizearr; i++) {   // Copy characters from arr to newarr
+            newarr[i] = arr[i];
+        }
+        newfreq[sizefreq] = num;   
+        sizefreq++;
+        newarr[sizearr] = st;
+        sizearr++;
+        free(freq);
+        free(arr);
+        freq = newfreq;
+        arr = newarr;
+        printf("Do you want to enter new activity (Y/N) : ");
+        scanf("%s", &choice);                                // Asking for entering new activity
+    }
+    int size = sizearr / sizeof(arr[0]);
     huffmancodes(arr, freq, size);
     return 0;
 }
