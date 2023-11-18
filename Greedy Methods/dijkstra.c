@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
-#define V 6 
+#define V 6
 int minDistance(int dist[], int sptSet[]) {
     int min = INT_MAX, min_index;
     for (int v = 0; v < V; v++) {
@@ -37,6 +37,7 @@ void dijkstra(int graph[V][V], int src) {
     printSolution(dist);
 }
 int main() {
+    
     int graph[V][V] = {
         {0, 4, 0, 0, 0, 0},
         {4, 0, 8, 0, 0, 0},
