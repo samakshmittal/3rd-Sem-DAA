@@ -52,7 +52,7 @@ int main() {
             printf("Enter the ending vertex index : ");
             scanf("%d", &end);
             printf("Enter distance between them : ");
-            scanf("%d", &dist);
+            scanf("%u", &dist);
         }
     }
     int graph[V][V] = {
