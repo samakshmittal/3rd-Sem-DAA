@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
+#include <stdlib.h>
+int V;
 int minDistance(int dist[], int sptSet[]) {
     int min = INT_MAX, min_index;
     for (int v = 0; v < V; v++) {
@@ -36,13 +38,14 @@ void dijkstra(int graph[V][V], int src) {
     printSolution(dist);
 }
 int main() {
-    int *graph[V][V]=NULL;
+    int *graph=NULL;
     char choice='y', choice1='y';
-    int i, j, V=0, start=0, end=0;
+    int i, j, start=0, end=0;
     unsigned dist;
+    V=0;
     while(choice=='y' || choice=='Y'){
         V++;
-        int *temp_graph = malloc((size + 1) * (size + 1) * sizeof(int));
+        int *temp_graph = malloc((V + 1) * (V + 1) * sizeof(int));
         if (temp_graph == NULL) {
             exit(1);
         }
@@ -70,17 +73,25 @@ int main() {
             printf("Do you want to enter new activity (Y/N) : ");
             scanf("%s", &choice1);
         }
+        free(graph);
+        graph = temp_graph;
         printf("Do you want to enter new activity (Y/N) : ");
         scanf("%s", &choice);
     }
-    int graph[V][V] = {
-        {0, 4, 0, 0, 0, 0},
-        {4, 0, 8, 0, 0, 0},
-        {0, 8, 0, 7, 0, 4},
-        {0, 0, 7, 0, 9, 14},
-        {0, 0, 0, 9, 0, 10},
-        {0, 0, 4, 14, 10, 0}
-    };
+    // int graph[V][V] = {
+    //     {0, 4, 0, 0, 0, 0},
+    //     {4, 0, 8, 0, 0, 0},
+    //     {0, 8, 0, 7, 0, 4},
+    //     {0, 0, 7, 0, 9, 14},
+    //     {0, 0, 0, 9, 0, 10},
+    //     {0, 0, 4, 14, 10, 0}
+    // };
+    for (i = 0; i < V; i++) {
+        for (j = 0; j < V; j++){
+            printf("%d ", graph[i][j]);
+        }
+        printf("\n");
+    }
     dijkstra(graph, 0);
     return 0;
 }
