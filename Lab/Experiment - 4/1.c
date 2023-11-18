@@ -42,6 +42,7 @@ int main(){
     for(i=0; i<size; i++){
         if(old[i].finish>old[i+1].finish){
             quicksort(old, 0, size-1);                       // Applying quick sort on activity finish time if already not sorted
+            printf("Sorting takes place.\n");
             break;
         }
     }
@@ -54,7 +55,7 @@ int main(){
             }
         }
     }
-    printf("Actvities after sorting according to finish time:\nActivity number\t Activity start time\tActivity finish time\n");
+    printf("Sorted actvities according to finish time:\nActivity number\t Activity start time\tActivity finish time\n");
     for(i=0; i<size; i++){                                  // Printing activities after sorting
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
