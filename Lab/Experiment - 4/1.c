@@ -39,7 +39,12 @@ int main(){
     for(i=0; i<size; i++){                                   // Printing activity entered by user
         printf("\t%d\t\t%d\t\t\t%d\n", old[i].number, old[i].start, old[i].finish);
     }
-    quicksort(old, 0, size-1);                               // Applying quick sort on activity finish time
+    for(i=0; i<size; i++){
+        if(old[i].finish>old[i+1].finish){
+            quicksort(old, 0, size-1);                       // Applying quick sort on activity finish time if already not sorted
+            break;
+        }
+    }
     for(i=0; i<size-1; i++){
         if(old[i].finish==old[i+1].finish){                  // If finish time is same of 2 activities then checking their start time and sort
             if(old[i+1].start>old[i].start){
