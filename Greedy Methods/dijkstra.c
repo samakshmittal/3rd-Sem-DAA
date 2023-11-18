@@ -56,16 +56,17 @@ int main() {
             temp_graph[i][V-1]=0;
         }
         while(choice1=='y' || choice1=='Y'){
-            while(start<V){
+            do{
                 printf("Enter the starting vertex index : ");
                 scanf("%d", &start);
-            }
-            while(end<V){
+            }while(start<V);
+            do{
                 printf("Enter the ending vertex index : ");
                 scanf("%d", &end);
-            }
+            }while(end<V);
             printf("Enter distance between them : ");
             scanf("%u", &dist);
+            temp_graph[start][end]=dist;
             printf("Do you want to enter new activity (Y/N) : ");
             scanf("%s", &choice1);
         }
