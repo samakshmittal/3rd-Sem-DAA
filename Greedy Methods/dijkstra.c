@@ -38,22 +38,39 @@ void dijkstra(int graph[V][V], int src) {
 int main() {
     int *graph[V][V]=NULL;
     char choice='y', choice1='y';
-    int i, j, V=0, start, end;
+    int i, j, V=0, start=0, end=0;
     unsigned dist;
     while(choice=='y' || choice=='Y'){
         V++;
+        int *temp_graph = malloc((size + 1) * (size + 1) * sizeof(int));
+        if (temp_graph == NULL) {
+            exit(1);
+        }
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                temp_graph[i][j] = graph[i][j];
+            }
+        }
         for(i=0; i<V; i++){
-            graph[V-1][i]=0;
-            graph[i][V-1]=0;
+            temp_graph[V-1][i]=0;
+            temp_graph[i][V-1]=0;
         }
         while(choice1=='y' || choice1=='Y'){
-            printf("Enter the starting vertex index : ");
-            scanf("%d", &start);
-            printf("Enter the ending vertex index : ");
-            scanf("%d", &end);
+            while(start<V){
+                printf("Enter the starting vertex index : ");
+                scanf("%d", &start);
+            }
+            while(end<V){
+                printf("Enter the ending vertex index : ");
+                scanf("%d", &end);
+            }
             printf("Enter distance between them : ");
             scanf("%u", &dist);
+            printf("Do you want to enter new activity (Y/N) : ");
+            scanf("%s", &choice1);
         }
+        printf("Do you want to enter new activity (Y/N) : ");
+        scanf("%s", &choice);
     }
     int graph[V][V] = {
         {0, 4, 0, 0, 0, 0},
