@@ -53,7 +53,6 @@ int main() {
                 temp_graph[i][j] = graph[i][j];
             }
         }
-        
         printf("Number of vertices available till now are %d\n", V+1);
         V++;
         for(i=0; i<V; i++){
