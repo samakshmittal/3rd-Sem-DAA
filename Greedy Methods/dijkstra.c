@@ -59,6 +59,12 @@ int main() {
             temp_graph[V-1][i]=0;
             temp_graph[i][V-1]=0;
         }
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                printf("%d ", temp_graph[i][j]);
+            }
+            printf("\n");
+        }
         while(choice1=='y' || choice1=='Y'){
             do{
                 printf("Enter the starting vertex index : ");
@@ -76,6 +82,12 @@ int main() {
         }
         free(graph);
         graph = temp_graph;
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                printf("%d ", graph[i][j]);
+            }
+            printf("\n");
+        }
         printf("Do you want to enter new vertex (Y/N) : ");
         scanf("%s", &choice);
     }
