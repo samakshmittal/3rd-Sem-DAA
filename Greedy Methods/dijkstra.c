@@ -18,7 +18,7 @@ void printSolution(int dist[]) {
         printf("%d \t\t %d\n", i, dist[i]);
     }
 }
-void dijkstra(int graph[V][V], int src) {
+void dijkstra(int **graph, int src) {
     int dist[V];     
     int sptSet[V];   
     for (int i = 0; i < V; i++) {
@@ -38,14 +38,13 @@ void dijkstra(int graph[V][V], int src) {
     printSolution(dist);
 }
 int main() {
-    int *graph=NULL;
+    int **graph=NULL;
     char choice='y', choice1='y';
     int i, j, start=0, end=0;
     unsigned dist;
     V=0;
     while(choice=='y' || choice=='Y'){
-        V++;
-        int *temp_graph = malloc((V + 1) * (V + 1) * sizeof(int));
+        int **temp_graph = malloc((V + 1) * (V + 1) * sizeof(int));
         if (temp_graph == NULL) {
             exit(1);
         }
@@ -54,6 +53,9 @@ int main() {
                 temp_graph[i][j] = graph[i][j];
             }
         }
+        
+        printf("Number of vertices available till now are %d\n", V+1);
+        V++;
         for(i=0; i<V; i++){
             temp_graph[V-1][i]=0;
             temp_graph[i][V-1]=0;
@@ -62,20 +64,20 @@ int main() {
             do{
                 printf("Enter the starting vertex index : ");
                 scanf("%d", &start);
-            }while(start<V);
+            }while(start>V);
             do{
                 printf("Enter the ending vertex index : ");
                 scanf("%d", &end);
-            }while(end<V);
+            }while(end>V);
             printf("Enter distance between them : ");
             scanf("%u", &dist);
             temp_graph[start][end]=dist;
-            printf("Do you want to enter new activity (Y/N) : ");
+            printf("Do you want to enter new distance with current vertices (Y/N) : ");
             scanf("%s", &choice1);
         }
         free(graph);
         graph = temp_graph;
-        printf("Do you want to enter new activity (Y/N) : ");
+        printf("Do you want to enter new vertex (Y/N) : ");
         scanf("%s", &choice);
     }
     // int graph[V][V] = {
