@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <limits.h>
-#define V 6
 int minDistance(int dist[], int sptSet[]) {
     int min = INT_MAX, min_index;
     for (int v = 0; v < V; v++) {
@@ -37,7 +36,25 @@ void dijkstra(int graph[V][V], int src) {
     printSolution(dist);
 }
 int main() {
-    
+    int *graph[V][V]=NULL;
+    char choice='y', choice1='y';
+    int i, j, V=0, start, end;
+    unsigned dist;
+    while(choice=='y' || choice=='Y'){
+        V++;
+        for(i=0; i<V; i++){
+            graph[V-1][i]=0;
+            graph[i][V-1]=0;
+        }
+        while(choice1=='y' || choice1=='Y'){
+            printf("Enter the starting vertex index : ");
+            scanf("%d", &start);
+            printf("Enter the ending vertex index : ");
+            scanf("%d", &end);
+            printf("Enter distance between them : ");
+            scanf("%d", &dist);
+        }
+    }
     int graph[V][V] = {
         {0, 4, 0, 0, 0, 0},
         {4, 0, 8, 0, 0, 0},
