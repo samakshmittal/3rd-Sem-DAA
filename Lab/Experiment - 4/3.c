@@ -2,7 +2,7 @@
 #include <stdlib.h>
 struct object{
     int number;                                              // Object number
-    int weight;                                              // Weight
+    float weight;                                            // Weight
     float profit;                                            // Profit
     float ppw;                                               // Profit/weight
 };
@@ -17,7 +17,7 @@ int main(){
         tem=malloc(sizeof(struct object));                   // Allocating memory to temp
         tem->number=size;                                    // Entering object number by series automatically
         printf("Enter weight of object %d : ", size);
-        scanf("%d", &tem->weight);                           // Input weight of the object
+        scanf("%f", &tem->weight);                           // Input weight of the object
         printf("Enter profit of object %d : ", size);
         scanf("%f", &tem->profit);                           // Input profit of the object
         tem->ppw=tem->profit/tem->weight;                    // Calculating profit per weight for each object and saving
@@ -40,7 +40,7 @@ int main(){
     }
     printf("  Object number\t\tWeight\t\t  Profit\t\tProfit per weight\n");
     for(i=0; i<size; i++){
-        printf("\t%d\t\t   %d\t\t%f\t\t    %f\n", old[i].number, old[i].weight, old[i].profit, old[i].ppw);
+        printf("\t%d\t\t   %.2f\t\t%f\t\t    %f\n", old[i].number, old[i].weight, old[i].profit, old[i].ppw);
     }
     for(i=0; i<size; i++){                                   // Maintaining loop
         max=old[i].ppw;                                      // Letting variable max as the profit per weight of the current object
@@ -57,12 +57,12 @@ int main(){
             }
         }
         if(max_size >= old[temp].weight){                    // Checking if maximum size of bag is more than or equal to the quantity of the current maximum ppw
-            printf("Object %d with weight %d and profit %f is added to bag.\n", old[temp].number, old[temp].weight, (float)(old[temp].profit));
+            printf("Object %d with weight %f and profit %f is added to bag.\n", old[temp].number, old[temp].weight, (float)(old[temp].profit));
             max_profit += (float)(old[temp].profit);         // Directly adding profit to maximum or overall profit
             max_size-=old[temp].weight;                      // Subtracting weight from maximum size that is occupied by the current object
         }
         else{                                                // Checking if maximum size of bag is less than the quantity of the current maximum ppw
-            printf("Object %d with weight %d and profit %f is added to bag.\n", old[temp].number, max_size, (float)(old[temp].profit*max_size/old[temp].weight));
+            printf("Object %d with weight %f and profit %f is added to bag.\n", old[temp].number, max_size, (float)(old[temp].profit*max_size/old[temp].weight));
             max_profit += (float)(old[temp].profit*max_size/old[temp].weight);   // Calculate the profit of the partial quantity putting in the bag and adding it to maximum or overall profit
             max_size=0;                                      // Make max size as 0 as bag is full now
             break;                                           // Breaking the loop as the bag is full so there is no need to maintain loop
