@@ -44,9 +44,15 @@ int main() {
     unsigned dist;
     V=0;
     while(choice=='y' || choice=='Y'){
-        int **temp_graph = malloc((V + 1) * (V + 1) * sizeof(int));
+        int **temp_graph = malloc((V + 1) * sizeof(int));
         if (temp_graph == NULL) {
             exit(1);
+        }
+        for (i = 0; i < V + 1; i++) {
+            temp_graph[i] = malloc((V + 1) * sizeof(int));
+            if (temp_graph[i] == NULL) {
+                exit(1);
+            }
         }
         for (i = 0; i < V; i++) {
             for (j = 0; j < V; j++){
@@ -65,7 +71,8 @@ int main() {
             }
             printf("\n");
         }
-        while(choice1=='y' || choice1=='Y'){
+        choice1='y';
+        while((choice1=='y' || choice1=='Y') && V!=1){
             do{
                 printf("Enter the starting vertex index : ");
                 scanf("%d", &start);
@@ -80,7 +87,6 @@ int main() {
             printf("Do you want to enter new distance with current vertices (Y/N) : ");
             scanf("%s", &choice1);
         }
-        free(graph);
         graph = temp_graph;
         for (i = 0; i < V; i++) {
             for (j = 0; j < V; j++){
@@ -105,6 +111,13 @@ int main() {
         }
         printf("\n");
     }
-    dijkstra(graph, 0);
+    int source;
+    printf("Enter the source node (0 to %d): ", V - 1);
+    scanf("%d", &source);
+    if (source < 0 ||   source >= V) {
+        printf("Invalid source node. Please enter a valid source node (0 to %d).\n", V - 1);
+        return 0;
+    }
+    dijkstra(graph, source);
     return 0;
 }
