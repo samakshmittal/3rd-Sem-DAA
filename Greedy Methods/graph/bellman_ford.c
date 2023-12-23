@@ -27,9 +27,7 @@ void bellman(int **graph, int src) {
     }
     dist[src] = 0;
     for (int count = 0; count < V - 1; count++) {
-        for (int v = 0; v < V; v++) {
-            int u = graph[j].src;
-            int w=
+        for (int v = 0; v < V*V; v++) {
             if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && (dist[u] + graph[u][v] < dist[v])) {
                 dist[v] = dist[u] + graph[u][v];
             }
