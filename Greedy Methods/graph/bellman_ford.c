@@ -18,7 +18,7 @@ int V;
 //         printf("%d \t\t %d\n", i, dist[i]);
 //     }
 // }
-void bellman(int graph[][], int src) {
+void bellman(int **graph, int src) {
     int dist[V];
     for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX;
@@ -50,61 +50,61 @@ int main() {
     char choice='y', choice1='y';
     int i, j, start=0, end=0;
     unsigned dist;
-    V=8;
-    // while(choice=='y' || choice=='Y'){
-    //     int **temp_graph = malloc((V + 1) * sizeof(int));
-    //     if (temp_graph == NULL) {
-    //         exit(1);
-    //     }
-    //     for (i = 0; i < V + 1; i++) {
-    //         temp_graph[i] = malloc((V + 1) * sizeof(int));
-    //         if (temp_graph[i] == NULL) {
-    //             exit(1);
-    //         }
-    //     }
-    //     for (i = 0; i < V; i++) {
-    //         for (j = 0; j < V; j++){
-    //             temp_graph[i][j] = graph[i][j];
-    //         }
-    //     }
-    //     printf("Number of vertices available till now are %d\n", V+1);
-    //     V++;
-    //     for(i=0; i<V; i++){
-    //         temp_graph[V-1][i]=0;
-    //         temp_graph[i][V-1]=0;
-    //     }
-    //     for (i = 0; i < V; i++) {
-    //         for (j = 0; j < V; j++){
-    //             printf("%d ", temp_graph[i][j]);
-    //         }
-    //         printf("\n");
-    //     }
-    //     choice1='y';
-    //     while((choice1=='y' || choice1=='Y') && V!=1){
-    //         do{
-    //             printf("Enter the starting vertex index : ");
-    //             scanf("%d", &start);
-    //         }while(start>V);
-    //         do{
-    //             printf("Enter the ending vertex index : ");
-    //             scanf("%d", &end);
-    //         }while(end>V);
-    //         printf("Enter distance between them : ");
-    //         scanf("%u", &dist);
-    //         temp_graph[start][end]=dist;
-    //         printf("Do you want to enter new distance with current vertices (Y/N) : ");
-    //         scanf("%s", &choice1);
-    //     }
-    //     graph = temp_graph;
-    //     for (i = 0; i < V; i++) {
-    //         for (j = 0; j < V; j++){
-    //             printf("%d ", graph[i][j]);
-    //         }
-    //         printf("\n");
-    //     }
-    //     printf("Do you want to enter new vertex (Y/N) : ");
-    //     scanf("%s", &choice);
-    // }
+    V=0;
+    while(choice=='y' || choice=='Y'){
+        int **temp_graph = malloc((V + 1) * sizeof(int));
+        if (temp_graph == NULL) {
+            exit(1);
+        }
+        for (i = 0; i < V + 1; i++) {
+            temp_graph[i] = malloc((V + 1) * sizeof(int));
+            if (temp_graph[i] == NULL) {
+                exit(1);
+            }
+        }
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                temp_graph[i][j] = graph[i][j];
+            }
+        }
+        printf("Number of vertices available till now are %d\n", V+1);
+        V++;
+        for(i=0; i<V; i++){
+            temp_graph[V-1][i]=0;
+            temp_graph[i][V-1]=0;
+        }
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                printf("%d ", temp_graph[i][j]);
+            }
+            printf("\n");
+        }
+        choice1='y';
+        while((choice1=='y' || choice1=='Y') && V!=1){
+            do{
+                printf("Enter the starting vertex index : ");
+                scanf("%d", &start);
+            }while(start>V);
+            do{
+                printf("Enter the ending vertex index : ");
+                scanf("%d", &end);
+            }while(end>V);
+            printf("Enter distance between them : ");
+            scanf("%u", &dist);
+            temp_graph[start][end]=dist;
+            printf("Do you want to enter new distance with current vertices (Y/N) : ");
+            scanf("%s", &choice1);
+        }
+        graph = temp_graph;
+        for (i = 0; i < V; i++) {
+            for (j = 0; j < V; j++){
+                printf("%d ", graph[i][j]);
+            }
+            printf("\n");
+        }
+        printf("Do you want to enter new vertex (Y/N) : ");
+        scanf("%s", &choice);
+    }
     // int graph[V][V] = {
     //     {0, 1, -1, 0, 0, 0},
     //     {0, 2, 4, 0, 0, 0},
