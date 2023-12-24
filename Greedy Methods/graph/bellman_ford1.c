@@ -26,23 +26,28 @@ void bellman(int graph[][5], int src) {
     dist[src] = 0;
     int x=0;
     while(x!=V-1){
-        for (int i = 0; i < V-1; i++) {
-            for (int j = 0; j < V-1; j++) {
+        for (int i = 0; i < V; i++) {
+            for (int j = 1; j < V; j++) {
                 if (dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
                     dist[j] = dist[i] + graph[i][j];
                 }
             }
+            printf("Vertex   Distance from Source\n");
+            for (int a = 0; a < V; a++) {
+                printf("%d \t\t %d\n", a, dist[a]);
+            }
+            printf("\n");
         }
         x++;
     }
-    // for(int i=0; i<V; i++){
-    //     int x=graph[i][];
-    //     int y=graph[i][1];
-    //     int weight=graph[i][2];
-    //     if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
-    //         printf("\nContains negative cycle\n");
-    //     }
-    // }
+    for(int i=0; i<V; i++){
+        int x=graph[i][];
+        int y=graph[i][1];
+        int weight=graph[i][2];
+        if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
+            printf("\nContains negative cycle\n");
+        }
+    }
     // printSolution(dist);
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < V; i++) {
