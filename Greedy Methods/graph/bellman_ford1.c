@@ -35,14 +35,14 @@ void bellman(int graph[][5], int src) {
         }
         x++;
     }
-    for(int i=0; i<V; i++){
-        int x=graph[i][];
-        int y=graph[i][1];
-        int weight=graph[i][2];
-        if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
-            printf("\nContains negative cycle\n");
-        }
-    }
+    // for(int i=0; i<V; i++){
+    //     int x=graph[i][];
+    //     int y=graph[i][1];
+    //     int weight=graph[i][2];
+    //     if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
+    //         printf("\nContains negative cycle\n");
+    //     }
+    // }
     // printSolution(dist);
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < V; i++) {
