@@ -36,9 +36,9 @@ void bellman(int graph[][5], int src) {
         x++;
     }
     for(int i=0; i<V; i++){
-        int x=graph[i][0];
-        int y=graph[i][1];
-        int weight=graph[i][2];
+        int x=i;
+        int y=j;
+        int weight=graph[i][j];
         if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
             printf("\nContains negative cycle\n");
         }
