@@ -110,11 +110,11 @@ int main() {
     //     scanf("%s", &choice);
     // }
     int graph[][5] = {
-        {0, -1, 4, 0, 0},
-        {0, 0, 3, 2, 2},
-        {0, 0, 0, 0, 0},
-        {0, 1, 5, 0, 0},
-        {0, 0, 0, -3, 0}
+        {INT_MAX, -1, 4, INT_MAX, INT_MAX},
+        {INT_MAX, INT_MAX, 3, 2, 2},
+        {INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX},
+        {INT_MAX, 1, 5, INT_MAX, INT_MAX},
+        {INT_MAX, INT_MAX, INT_MAX, -3, INT_MAX}
     };
     for (i = 0; i < V; i++) {
         for (j = 0; j < V; j++){
