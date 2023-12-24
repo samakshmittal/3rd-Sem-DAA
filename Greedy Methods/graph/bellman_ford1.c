@@ -50,7 +50,7 @@ int main() {
     char choice='y', choice1='y';
     int i, j, start=0, end=0;
     unsigned dist;
-    V=8;
+    V=5;
     // while(choice=='y' || choice=='Y'){
     //     int **temp_graph = malloc((V + 1) * sizeof(int));
     //     if (temp_graph == NULL) {
