@@ -18,7 +18,7 @@ int V;
 //         printf("%d \t\t %d\n", i, dist[i]);
 //     }
 // }
-void bellman(int graph[][3], int src) {
+void bellman(int graph[][5], int src) {
     int dist[V];
     for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX;
@@ -28,8 +28,8 @@ void bellman(int graph[][3], int src) {
     while(x!=V-1){
         for (int i = 0; i < V - 1; i++) {
             for (int j = 0; j < V-1; j++) {
-                if (dist[graph[i][j]] != INT_MAX && dist[graph[i][j]] + graph[i][j+1] < dist[graph[j][1]]) {
-                    dist[graph[j][1]] = dist[graph[j][0]] + graph[j][2];
+                if (dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
+                    dist[j] = dist[i] + graph[i][j];
                 }
             }
         }
