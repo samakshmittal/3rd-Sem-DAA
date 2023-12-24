@@ -105,7 +105,7 @@ int main() {
     //     printf("Do you want to enter new vertex (Y/N) : ");
     //     scanf("%s", &choice);
     // }
-    int graph[V][V] = {
+    int graph[V][Vf=-1\+8] = {
         {0, 1, -1, 0, 0, 0},
         {0, 2, 4, 0, 0, 0},
         {1, 2, 3, 0, 0, 0},
