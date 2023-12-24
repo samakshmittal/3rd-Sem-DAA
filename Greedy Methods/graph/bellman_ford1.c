@@ -25,7 +25,7 @@ void bellman(int graph[][3], int src) {
     }
     dist[src] = 0;
     for (int i = 0; i < V - 1; i++) {
-        for (int j = 0; j < 8; j++) {
+        for (int j = 0; j < V; j++) {
             if (dist[graph[i][j]] != INT_MAX && dist[graph[i][j]] + graph[j][2] < dist[graph[j][1]]) {
                 dist[graph[j][1]] = dist[graph[j][0]] + graph[j][2];
             }
@@ -105,15 +105,12 @@ int main() {
     //     printf("Do you want to enter new vertex (Y/N) : ");
     //     scanf("%s", &choice);
     // }
-    int graph[][3] = {
-        {0, 1, -1},
-        {0, 2, 4},
-        {1, 2, 3},
-        {1, 3, 2},
-        {1, 4, 2},
-        {3, 2, 5},
-        {3, 1, 1},
-        {4, 3, -3}
+    int graph[V][V] = {
+        {0, -1, 4, 0, 0},
+        {0, 0, 3, 2, 2},
+        {0, 0, 0, 0, 0},
+        {0, 1, 5, 0, 0},
+        {0, 0, 0, -3, 0}
     };
     for (i = 0; i < V; i++) {
         for (j = 0; j < V; j++){
