@@ -124,7 +124,7 @@ int main() {
     int source;
     printf("Enter the source node (0 to %d): ", V - 1);
     scanf("%d", &source);
-    if (source < 0 ||   source >= V) {
+    if (source < 0 || source >= V) {
         printf("Invalid source node. Please enter a valid source node (0 to %d).\n", V - 1);
         return 0;
     }
