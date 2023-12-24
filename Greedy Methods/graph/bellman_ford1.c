@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
-int V=8;
+int V;
 // int minDistance(int dist[], int sptSet[]) {
 //     int min = INT_MAX, min_index;
 //     for (int v = 0; v < V; v++) {
@@ -18,7 +18,7 @@ int V=8;
 //         printf("%d \t\t %d\n", i, dist[i]);
 //     }
 // }
-void bellman(int graph[][8], int src) {
+void bellman(int graph[][3], int src) {
     int dist[V];
     for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX;
@@ -105,15 +105,15 @@ int main() {
     //     printf("Do you want to enter new vertex (Y/N) : ");
     //     scanf("%s", &choice);
     // }
-    int graph[V][Vf=-1\+8] = {
-        {0, 1, -1, 0, 0, 0},
-        {0, 2, 4, 0, 0, 0},
-        {1, 2, 3, 0, 0, 0},
-        {1, 3, 2, 0, 0, 0},
-        {1, 4, 2, 0, 0, 0},
-        {3, 2, 5, 0, 0, 0},
-        {3, 1, 1, 0, 0, 0},
-        {4, 3, -3, 0, 0, 0}
+    int graph[][3] = {
+        {0, 1, -1},
+        {0, 2, 4},
+        {1, 2, 3},
+        {1, 3, 2},
+        {1, 4, 2},
+        {3, 2, 5},
+        {3, 1, 1},
+        {4, 3, -3}
     };
     for (i = 0; i < V; i++) {
         for (j = 0; j < V; j++){
