@@ -28,14 +28,11 @@ void bellman(int graph[][5], int src) {
     while(x!=V-1){
         for (int i = 0; i < V; i++) {
             for (int j = 1; j < V; j++) {
-                if (dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
+                if (graph[i][j] && dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
                     dist[j] = dist[i] + graph[i][j];
                 }
             }
             printf("Vertex   Distance from Source\n");
-            for (int a = 0; a < V; a++) {
-                printf("%d \t\t %d\n", a, dist[a]);
-            }
             printf("\n");
         }
         x++;
