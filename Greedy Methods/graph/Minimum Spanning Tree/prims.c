@@ -6,7 +6,7 @@ int V;
 int minkey(int key[], bool mstset[]){
     int min=INT_MAX, min_index;
     for(int v=0; v<V; v++){
-        if(mstset[V] == false && key[v] < min){       // Checking whether the vertex is not included and then from them minimum key vertex
+        if(mstset[v] == false && key[v] < min){       // Checking whether the vertex is not included and then from them minimum key vertex
             min=key[v], min_index=v;
         }
     }
