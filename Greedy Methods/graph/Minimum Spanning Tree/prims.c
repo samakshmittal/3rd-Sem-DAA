@@ -33,8 +33,8 @@ void prims(int **graph){
         mstset[u]=true;
         for(int v=0; v<V; v++){
             if(graph[u][v] && mstset[v]==false && graph[u][v]<key[v]){
-                key[v]=graph[u][v];
                 parent[v]=u;
+                key[v]=graph[u][v];
             }
         }
     }
