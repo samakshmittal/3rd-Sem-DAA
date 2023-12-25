@@ -2,44 +2,30 @@
 #include <limits.h>
 #include <stdlib.h>
 int V;
-// int minDistance(int dist[], int sptSet[]) {
-//     int min = INT_MAX, min_index;
-//     for (int v = 0; v < V; v++) {
-//         if (!sptSet[v] && dist[v] < min) {
-//             min = dist[v];
-//             min_index = v;
-//         }
-//     }
-//     return min_index;
-// }
-// void printSolution(int dist[]) {
-//     printf("Vertex   Distance from Source\n");
-//     for (int i = 0; i < V; i++) {
-//         printf("%d \t\t %d\n", i, dist[i]);
-//     }
-// }
 void bellman(int **graph, int src) {
     int dist[V];
     for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX;
     }
     dist[src] = 0;
-    for (int i = 0; i < V - 1; i++) {
-        for (int j = 0; j < V*V; j++) {
-            if (dist[graph[j][0]] != INT_MAX && dist[graph[j][0]] + graph[j][2] < dist[graph[j][1]]) {
-                dist[graph[j][1]] = dist[graph[j][0]] + graph[j][2];
+    int x=0;
+    while(x!=V-1){
+        for (int i = 0; i < V; i++) {
+            for (int j = 1; j < V; j++) {
+                if (graph[i][j] && dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
+                    dist[j] = dist[i] + graph[i][j];
+                }
+            }
+        }
+        x++;
+    }
+    for (int i = 0; i < V; i++) {
+        for (int j = 1; j < V; j++) {
+            if (graph[i][j] && dist[i] != INT_MAX && dist[i] + graph[i][j] < dist[j]) {
+                printf("\nContains negative cycle\n");
             }
         }
     }
-    for(int i=0; i<V; i++){
-        int x=graph[i][0];
-        int y=graph[i][1];
-        int weight=graph[i][2];
-        if(dist[x]!=INT_MAX && dist[x]+weight<dist[y]){
-            printf("\nContains negative cycle\n");
-        }
-    }
-    // printSolution(dist);
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < V; i++) {
         printf("%d \t\t %d\n", i, dist[i]);
@@ -105,16 +91,6 @@ int main() {
         printf("Do you want to enter new vertex (Y/N) : ");
         scanf("%s", &choice);
     }
-    // int graph[V][V] = {
-    //     {0, 1, -1, 0, 0, 0},
-    //     {0, 2, 4, 0, 0, 0},
-    //     {1, 2, 3, 0, 0, 0},
-    //     {1, 3, 2, 0, 0, 0},
-    //     {1, 4, 2, 0, 0, 0},
-    //     {3, 2, 5, 0, 0, 0},
-    //     {3, 1, 1, 0, 0, 0},
-    //     {4, 3, -3, 0, 0, 0}
-    // };
     for (i = 0; i < V; i++) {
         for (j = 0; j < V; j++){
             printf("%d ", graph[i][j]);
